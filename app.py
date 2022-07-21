@@ -31,6 +31,7 @@ def getConfig():
     try:
         with open(config_file) as f:
             data = json.load(f)
+            return data
     except:
         print("Creating config file")
         data = {}
@@ -65,10 +66,10 @@ def getConfig():
             portals[portal].setdefault("custom epg ids", {})
             portals[portal].setdefault("fallback channels", {})
 
-    with open(config_file, "w") as f:
-        json.dump(data, f, indent=4)
+        with open(config_file, "w") as f:
+            json.dump(data, f, indent=4)
 
-    return data
+        return data
 
 def jwtSign(username):
   with open(config_file) as f:
