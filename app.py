@@ -22,7 +22,7 @@ else:
 if os.getenv("CONFIG"):
     config_file = os.getenv("CONFIG")
 else:
-    config_file = str(basePath) + "/config.json"
+    config_file = str(basePath) + "/config.new.json"
 
 
 
