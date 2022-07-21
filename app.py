@@ -35,40 +35,40 @@ def getConfig():
         print("Creating config file")
         data = {}
     
-    data.setdefault("portals", {})
-    data.setdefault("settings", {})
-    data["settings"].setdefault(
-        "ffmpeg command", "-vcodec copy -acodec copy -f mpegts")
-    data["settings"].setdefault("ffprobe timeout", "5")
-    data["settings"].setdefault("hdhr name", "STB-Proxy")
-    data["settings"].setdefault("hdhr id", uuid.uuid4().hex)
-    data["settings"].setdefault("hdhr tuners", "1")
-    data["settings"].setdefault("Username", "Admin")
-    data["settings"].setdefault("Password", "12345")
-    data["settings"].setdefault("JWT_KEY", "TYnc6fUVtpJJs6ykVfdS")
-    data["settings"].setdefault("JWT_ISS", "STB-Proxy")
-    data["settings"].setdefault("JWT_ALGO", "HS512")
+        data.setdefault("portals", {})
+        data.setdefault("settings", {})
+        data["settings"].setdefault(
+            "ffmpeg command", "-vcodec copy -acodec copy -f mpegts")
+        data["settings"].setdefault("ffprobe timeout", "5")
+        data["settings"].setdefault("hdhr name", "STB-Proxy")
+        data["settings"].setdefault("hdhr id", uuid.uuid4().hex)
+        data["settings"].setdefault("hdhr tuners", "1")
+        data["settings"].setdefault("Username", "Admin")
+        data["settings"].setdefault("Password", "12345")
+        data["settings"].setdefault("JWT_KEY", "TYnc6fUVtpJJs6ykVfdS")
+        data["settings"].setdefault("JWT_ISS", "STB-Proxy")
+        data["settings"].setdefault("JWT_ALGO", "HS512")
 
-    portals = data.get("portals")
-    for portal in portals:
-        portals[portal].setdefault("enabled", "true")
-        portals[portal].setdefault("name", "")
-        portals[portal].setdefault("url", "")
-        portals[portal].setdefault("mac", "")
-        portals[portal].setdefault("proxy", "")
-        portals[portal].setdefault("ffmpeg", "false")
-        portals[portal].setdefault("expires", "")
-        portals[portal].setdefault("enabled channels", [])
-        portals[portal].setdefault("custom channel numbers", {})
-        portals[portal].setdefault("custom channel names", {})
-        portals[portal].setdefault("custom genres", {})
-        portals[portal].setdefault("custom epg ids", {})
-        portals[portal].setdefault("fallback channels", {})
+        portals = data.get("portals")
+        for portal in portals:
+            portals[portal].setdefault("enabled", "true")
+            portals[portal].setdefault("name", "")
+            portals[portal].setdefault("url", "")
+            portals[portal].setdefault("mac", "")
+            portals[portal].setdefault("proxy", "")
+            portals[portal].setdefault("ffmpeg", "false")
+            portals[portal].setdefault("expires", "")
+            portals[portal].setdefault("enabled channels", [])
+            portals[portal].setdefault("custom channel numbers", {})
+            portals[portal].setdefault("custom channel names", {})
+            portals[portal].setdefault("custom genres", {})
+            portals[portal].setdefault("custom epg ids", {})
+            portals[portal].setdefault("fallback channels", {})
 
-    with open(config_file, "w") as f:
-        json.dump(data, f, indent=4)
+        with open(config_file, "w") as f:
+            json.dump(data, f, indent=4)
 
-    return data
+        return data
 
 def jwtSign(username):
   with open(config_file) as f:
