@@ -30,8 +30,8 @@ else:
 def getConfig():
     try:
         with open(config_file) as f:
-            data = json.load(f)
-            return data
+            file_data = json.load(f)
+            return file_data
     except:
         print("Creating config file")
         data = {}
@@ -49,8 +49,7 @@ def getConfig():
         data["settings"].setdefault("JWT_KEY", "TYnc6fUVtpJJs6ykVfdS")
         data["settings"].setdefault("JWT_ISS", "STB-Proxy")
         data["settings"].setdefault("JWT_ALGO", "HS512")
-    
-    if portals:
+
         portals = data.get("portals")
         for portal in portals:
             portals[portal].setdefault("enabled", "true")
