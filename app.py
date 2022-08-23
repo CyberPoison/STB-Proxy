@@ -50,7 +50,7 @@ def getConfig():
         data["settings"].setdefault("JWT_ISS", "STB-Proxy")
         data["settings"].setdefault("JWT_ALGO", "HS512")
     
-    finally:
+    if portals:
         portals = data.get("portals")
         for portal in portals:
             portals[portal].setdefault("enabled", "true")
@@ -69,7 +69,6 @@ def getConfig():
 
         with open(config_file, "w") as f:
             json.dump(data, f, indent=4)
-
         return data
 
 def jwtSign(username):
