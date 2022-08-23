@@ -49,7 +49,8 @@ def getConfig():
         data["settings"].setdefault("JWT_KEY", "TYnc6fUVtpJJs6ykVfdS")
         data["settings"].setdefault("JWT_ISS", "STB-Proxy")
         data["settings"].setdefault("JWT_ALGO", "HS512")
-
+    
+    finally:
         portals = data.get("portals")
         for portal in portals:
             portals[portal].setdefault("enabled", "true")
